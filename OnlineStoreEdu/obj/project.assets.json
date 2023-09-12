@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Программирование\\Обучение\\OnlineStore\\OnlineStore\\OnlineStore.csproj",
-      "projectName": "OnlineStore",
-      "projectPath": "E:\\Программирование\\Обучение\\OnlineStore\\OnlineStore\\OnlineStore.csproj",
+      "projectUniqueName": "E:\\Программирование\\Обучение\\OnlineStore\\OnlineStoreEdu\\OnlineStoreEdu.csproj",
+      "projectName": "OnlineStoreEdu",
+      "projectPath": "E:\\Программирование\\Обучение\\OnlineStore\\OnlineStoreEdu\\OnlineStoreEdu.csproj",
       "packagesPath": "C:\\Users\\Вадим\\.nuget\\packages\\",
-      "outputPath": "E:\\Программирование\\Обучение\\OnlineStore\\OnlineStore\\obj\\",
+      "outputPath": "E:\\Программирование\\Обучение\\OnlineStore\\OnlineStoreEdu\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
