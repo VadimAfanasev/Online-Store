@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using OnlineStoreEdu.Data;
+
 namespace OnlineStoreEdu
 {
     public class Program
@@ -9,7 +12,11 @@ namespace OnlineStoreEdu
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
-            builder.Services.AddDbContext<ApplicationContext>;
+
+            string connection = builder.Configuration.GetConnectionString("DefaultConnection");
+
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+            options.UseSqlServer(connection));
 
             var app = builder.Build();
 
