@@ -9,6 +9,7 @@ namespace OnlineStoreEdu
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
+            builder.Services.AddDbContext<ApplicationContext>;
 
             var app = builder.Build();
 
