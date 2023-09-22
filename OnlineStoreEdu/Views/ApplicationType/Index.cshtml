@@ -7,7 +7,7 @@
 		</div>
 		<div class="col-6 text-right"> 
 			<a asp-action="Create" class="btn btn-primary">
-				Create New Application Type
+				<i class="fa fa-plus" aria-hidden="false"></i> &nbsp; Create New Application Type
 			</a>
 		</div>
 	</div>
@@ -29,7 +29,18 @@
 				{
 					<tr>
 						<td width="50%">@obj.Name</td>
-						<td></td>
+						<td class="text-center">
+							<div class="w-75 btn-group" role="group">
+								<a asp-route-Id="@obj.Id" asp-action="Edit" class="btn btn-primary mx-2">
+									<i class="fa fa-pencil-square-o"></i>
+									Edit
+								</a>
+								<a asp-route-Id="@obj.Id" asp-action="Delete" class="btn btn-danger mx-2">
+									<i class="fa fa-trash" aria-hidden="true"></i>
+									Delete
+								</a>
+							</div>
+						</td>
 					</tr>
 				}
 			</tbody>
