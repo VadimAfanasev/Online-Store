@@ -28,13 +28,14 @@ namespace OnlineStoreEdu.Controllers
         //GET - UPSERT
 		public IActionResult Upsert(int? id)
 		{
-            IEnumerable<SelectListItem> CetgotyDropDown = _db.Category.Select(i => new SelectListItem
+            IEnumerable<SelectListItem> CetegoryDropDown = _db.Category.Select(i => new SelectListItem
             {
                 Text = i.Name,
                 Value = i.Id.ToString()
             });
 
-            ViewBag.CetgotyDropDown = CetgotyDropDown;
+            //ViewBag.CetegoryDropDown = CetegoryDropDown;
+            ViewData["CetegoryDropDown"] = CetegoryDropDown;
 
             Product product = new Product();
             if (id == null)
