@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using OnlineStoreEdu.Data;
 using OnlineStoreEdu.Models;
 
@@ -27,6 +28,14 @@ namespace OnlineStoreEdu.Controllers
         //GET - UPSERT
 		public IActionResult Upsert(int? id)
 		{
+            IEnumerable<SelectListItem> CetgotyDropDown = _db.Category.Select(i => new SelectListItem
+            {
+                Text = i.Name,
+                Value = i.Id.ToString()
+            });
+
+            ViewBag.CetgotyDropDown = CetgotyDropDown;
+
             Product product = new Product();
             if (id == null)
             {
