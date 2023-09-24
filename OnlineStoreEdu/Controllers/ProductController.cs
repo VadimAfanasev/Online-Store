@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using OnlineStoreEdu.Data;
 using OnlineStoreEdu.Models;
+using OnlineStoreEdu.Models.ViewModels;
 
 namespace OnlineStoreEdu.Controllers
 {
@@ -28,29 +29,41 @@ namespace OnlineStoreEdu.Controllers
         //GET - UPSERT
 		public IActionResult Upsert(int? id)
 		{
-            IEnumerable<SelectListItem> CetegoryDropDown = _db.Category.Select(i => new SelectListItem
+            //IEnumerable<SelectListItem> CetegoryDropDown = _db.Category.Select(i => new SelectListItem
+            //{
+            //    Text = i.Name,
+            //    Value = i.Id.ToString()
+            //});
+
+            ////ViewBag.CetegoryDropDown = CetegoryDropDown;
+            //ViewData["CetegoryDropDown"] = CetegoryDropDown;
+
+            //Product product = new Product();
+
+            ProductVM ProductVM = new ProductVM()
             {
-                Text = i.Name,
-                Value = i.Id.ToString()
-            });
+                Product = new Product(),
+                CategorySelectList = _db.Category.Select(i => new SelectListItem
+                {
+                    Text = i.Name,
+                    Value = i.Id.ToString()
+                })
 
-            //ViewBag.CetegoryDropDown = CetegoryDropDown;
-            ViewData["CetegoryDropDown"] = CetegoryDropDown;
+            };
 
-            Product product = new Product();
             if (id == null)
             {
                 //this is for create
-                return View(product);
+                return View(ProductVM);
             }
             else
             {
-                product = _db.Product.Find(id);
-                if (product == null)
+                ProductVM.Product = _db.Product.Find(id);
+                if (ProductVM.Product == null)
                 {
                     return NotFound();
                 }
-			    return View(product);
+			    return View(ProductVM);
             }
 		}
 
