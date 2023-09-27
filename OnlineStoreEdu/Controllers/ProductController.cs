@@ -133,7 +133,13 @@ namespace OnlineStoreEdu.Controllers
                 _db.SaveChanges();
 			    return RedirectToAction("Index");
             }
-            return View(); 
+            productVM.CategorySelectList = _db.Category.Select(i => new SelectListItem
+            {
+                Text = i.Name,
+                Value = i.Id.ToString()
+            });
+
+            return View(productVM); 
 		}
 
         //GET - DELETE
