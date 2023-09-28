@@ -24,6 +24,7 @@ namespace OnlineStoreEdu.Controllers
             foreach (var obj in objList)
             {
                 obj.Category = _db.Category.FirstOrDefault(n => n.Id == obj.CategoryId);
+                obj.ApplicationType = _db.ApplicationType.FirstOrDefault(n => n.Id == obj.ApplicationTypeId);
             }
 
             return View(objList);
@@ -47,6 +48,11 @@ namespace OnlineStoreEdu.Controllers
             {
                 Product = new Product(),
                 CategorySelectList = _db.Category.Select(i => new SelectListItem
+                {
+                    Text = i.Name,
+                    Value = i.Id.ToString()
+                }),
+                ApplicationTypeSelectList = _db.ApplicationType.Select(i => new SelectListItem
                 {
                     Text = i.Name,
                     Value = i.Id.ToString()
@@ -138,6 +144,11 @@ namespace OnlineStoreEdu.Controllers
                 Text = i.Name,
                 Value = i.Id.ToString()
             });
+            productVM.ApplicationTypeSelectList = _db.ApplicationType.Select(i => new SelectListItem
+            {
+                Text = i.Name,
+                Value = i.Id.ToString()
+            });
 
             return View(productVM); 
 		}
@@ -150,7 +161,7 @@ namespace OnlineStoreEdu.Controllers
                 return NotFound();
             }
 
-            Product product = _db.Product.Include(c => c.Category).FirstOrDefault(x => x.Id == id);
+            Product product = _db.Product.Include(c => c.Category).Include(c => c.ApplicationType).FirstOrDefault(x => x.Id == id);
             //product.Category = _db.Category.Find(product.CategoryId);
              
             if (product == null)
