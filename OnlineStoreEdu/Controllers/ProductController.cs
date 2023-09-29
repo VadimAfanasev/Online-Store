@@ -20,12 +20,14 @@ namespace OnlineStoreEdu.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<Product> objList = _db.Product;
-            foreach (var obj in objList)
-            {
-                obj.Category = _db.Category.FirstOrDefault(n => n.Id == obj.CategoryId);
-                obj.ApplicationType = _db.ApplicationType.FirstOrDefault(n => n.Id == obj.ApplicationTypeId);
-            }
+            IEnumerable<Product> objList = _db.Product.Include(u=>u.Category).Include(c=>c.ApplicationType);
+
+
+            //foreach (var obj in objList)
+            //{
+            //    obj.Category = _db.Category.FirstOrDefault(n => n.Id == obj.CategoryId);
+            //    obj.ApplicationType = _db.ApplicationType.FirstOrDefault(n => n.Id == obj.ApplicationTypeId);
+            //}
 
             return View(objList);
         }
