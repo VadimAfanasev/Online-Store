@@ -22,7 +22,6 @@ namespace OnlineStoreEdu.Controllers
         {
             IEnumerable<Product> objList = _db.Product.Include(u=>u.Category).Include(c=>c.ApplicationType);
 
-
             //foreach (var obj in objList)
             //{
             //    obj.Category = _db.Category.FirstOrDefault(n => n.Id == obj.CategoryId);
@@ -40,7 +39,6 @@ namespace OnlineStoreEdu.Controllers
             //    Text = i.Name,
             //    Value = i.Id.ToString()
             //});
-
             ////ViewBag.CetegoryDropDown = CetegoryDropDown;
             //ViewData["CetegoryDropDown"] = CetegoryDropDown;
 
